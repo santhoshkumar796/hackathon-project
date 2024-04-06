@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&display=swap');
+
+
+body {
+    margin: 0;
+    font-family: "Afacad", sans-serif;
+     font-weight: 400;
+     overflow-x: hidden;
+}
+
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    /* background-color: #333; */
+    background-color: black;
+    color: #fff;
+    /* padding: 20px 0; */
+    z-index: 1000;
+    font-size: 28px;
+    
+
+}
+
+.container {
+    width: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content{
+    height: 100vh;
+    padding: 12rem 4rem;
+    display: flex;
+    gap:50px;
+}
+.right-content{
+    width: 50%;
+    padding: 1rem;
+}
+.left-content{
+    width: 50%;
+    padding: 1rem;
+}
+h2{
+    text-align: justify;
+}
+
+button{
+    padding: 0.9rem;
+    margin-right: 10px;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    
+}
+#btn-one{
+    background-color: #003fb2;
+    color: white;
+    font-weight: 700;
+    padding: 0.7rem !important;
+    text-decoration: none;
+    border-radius: 12px;
+   
+    
+}
+#btn-two{
+    background-color: black;
+    color: white;
+    font-weight: 700;
+    
+}
+
+.image-slider{
+    width: 75vmin;
+    position: absolute;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;}
+.wrapper{
+    width: 100%;
+    display: flex;
+    animation: slide 16s infinite;
+}
+@keyframes slide{
+    0%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(0);
+    }
+    30%{
+        transform: translateX(-100%);
+    }
+    50%{
+        transform: translateX(-100%);
+    }
+    55%{
+        transform: translateX(-200%);
+    }
+    75%{
+        transform: translateX(-200%);
+    }
+    80%{
+        transform: translateX(-300%);
+    }
+    100%{
+        transform: translateX(-300%);
+    }
+}
+img{
+    width: 100%;
+}
+@media(max-width:1000px){
+    #navbar{
+        width: 100%;
+    }
+    h2{
+        text-align: center;
+    }
+    .content{
+        width: 100%;
+        display: block;
+        padding: 8rem 4rem;
+        text-align: center;
+    }
+    .right-content{
+        width: 100%;
+    }
+    .left-content{
+        width: 100%;
+        height: 50vmin;    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .image-slider{
+        width: 100px;
+    }
+}
+@media(max-width:1135px){
+    .image-slider{
+        width: 70vmin;
+    }
+}
+@media(max-width:1075px){
+    .image-slider{
+        width: 63vmin;
+    }
+}
+</style>
+</head>
+<body>
+  <body>
+    <nav id="navbar">
+        <div class="container">
+            <h1>Pothole Patrol</h1>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="right-content">
+            <h2>To facilitate efficient reporting and monitoring of road potholes, aiding in accident prevention. Users can easily report potholes encountered on roads, providing location details and images. Authorities can access a centralized dashboard to prioritize repairs based on severity and location data, improving road safety and reducing accidents caused by deteriorating road conditions.</h2>
+            <p>Do You Want to step into a Accident Free World. Let's Create Something Amzing with us..</p>
+            <div class="btn">
+    
+    <a href="/login" id="btn-one">REGISTER COMPLAINT</a>
+    <button id="btn-two">COMPLAINT STATUS</button>
+            </div>
+          </div>
+          <div class="left-content">
+            <div class="image-slider">
+                <div class="wrapper">
+                    <img src="../public/Image1.jpg">
+                    <img src="../public/Image2.jpg">
+                    <img src="/public/Image3.jpg">
+                    <img src="/public/Image4.jpg">
+                </div>
+            </div>        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+</head>
+<body>
+    <h1>User Details</h1>
+    <div id="userDetails"></div>
+
+    <script>
+        // Initialize user details
+        function initUserDetails() {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userDetailsDiv = document.getElementById('userDetails');
+            userDetailsDiv.innerHTML = '';
+
+            users.forEach((user, index) => {
+                const userDiv = document.createElement('div');
+                userDiv.innerHTML = `
+                    <h2>User ${index + 1}</h2>
+                    <p><strong>Name:</strong> ${user.name}</p>
+                    <p><strong>Address:</strong> ${user.address}</p>
+                    <img src="${user.image}" alt="${user.name}'s Image" style="max-width: 200px; max-height: 200px;">
+                    <hr>
+                `;
+                userDetailsDiv.appendChild(userDiv);
+            });
+        }
+
+        // Call initUserDetails function when the page loads
+        window.onload = function() {
+            initUserDetails();
+        };
+    </script>
+</body>
+</html>

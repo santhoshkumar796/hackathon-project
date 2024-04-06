@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+</head>
+<body>
+    <h1>User Registration</h1>
+    <form id="registrationForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address"><br>
+        <label for="phone">Phone:</label><br>
+        <input type="text" id="phone" name="phone"><br>
+        <label for="image">Upload Image:</label><br>
+        <input type="file" id="image" name="image" accept="image/*"><br>
+        <button type="button" onclick="registerUser()">Submit</button>
+    </form>
+    <a href="/final">Final</a> <!-- Link to final page -->
+    <button onclick="clearLocalStorage()">Clear All Details</button>
+
+    <script>
+        function registerUser() {
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const imageInput = document.getElementById('image');
+
+            if (name && address && phone && imageInput.files && imageInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const imageUrl = e.target.result;
+                    // Retrieve existing users from localStorage or initialize empty array
+                    const users = JSON.parse(localStorage.getItem('users')) || [];
+                    // Save user details in localStorage
+                    users.push({ name: name, address: address, phone: phone, image: imageUrl });
+                    localStorage.setItem('users', JSON.stringify(users));
+                    customAlert('User registered successfully!');
+                    // Clear form fields
+                    document.getElementById('name').value = '';
+                    document.getElementById('address').value = '';
+                    document.getElementById('phone').value = '';
+                    document.getElementById('image').value = '';
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            } else {
+                customAlert("Please fill in all fields and select an image file to upload.");
+            }
+        }
+
+        function clearLocalStorage() {
+            localStorage.removeItem('users');
+        }
+
+        // Custom alert function
+        function customAlert(message) {
+            const alertBox = document.createElement('div');
+            alertBox.style.position = 'fixed';
+            alertBox.style.top = '50%';
+            alertBox.style.left = '50%';
+            alertBox.style.transform = 'translate(-50%, -50%)';
+            alertBox.style.background = '#f9f9f9';
+            alertBox.style.padding = '20px';
+            alertBox.style.border = '1px solid #ccc';
+            alertBox.textContent = message;
+            document.body.appendChild(alertBox);
+            setTimeout(function() {
+                document.body.removeChild(alertBox);
+            }, 3000); // Auto close after 3 seconds
+        }
+    </script>
+</body>
+</html>
